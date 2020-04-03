@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const handlebars = require('handlebars');
 const bodyParser = require('body-parser');
 
+
 // Creates the express application
 const app = express();
 const port = 9090;
@@ -60,10 +61,28 @@ app.get('/', function(req, res) {
 
 app.get('/getStudents', function(req, res) {
   // TODO
+    res.status(200).send(students);
 });
 
 app.post('/addStudent', function(req, res) {
   // TODO
+    /**
+        {
+            name: name,
+            id: idnum,
+            gender: gender,
+        }
+    **/
+    
+    var student = {
+        name: req.body.name,
+        id: req.body.id,
+        img: `img/${req.body.gender}.png`
+    }
+    
+    students.push(student);
+    
+    res.status(200).send(student);
 })
 
 /**
